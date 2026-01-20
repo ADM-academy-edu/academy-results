@@ -132,14 +132,17 @@
 
 <script src="result.js"></script>
 <script>
-    // Populate phase dropdown dynamically
-    const phaseSelect = document.getElementById("phase");
-    ["Pre Phase","School pre board","phase 1","phase 2","phase 3","phase 4","phase 5","phase 6","Pre Board 1","Pre Board 2","Final Pre Board"].forEach(phase=>{
-        const opt = document.createElement("option");
-        opt.value = phase;
-        opt.text = phase.charAt(0).toUpperCase() + phase.slice(1);
-        phaseSelect.add(opt);
-    });
+    const phaseSelect = document.getElementById("phase"); // ✅ Add this line
+const phases = ["Pre Phase","School pre board","phase 1","phase 2","phase 3","phase 4","phase 5","phase 6","Pre Board 1","Pre Board 2","Final Pre Board"];
+
+phases.forEach(p => {
+    const opt = document.createElement("option");
+    opt.value = p; // This must exactly match key in results object
+    opt.text = p;  // Text displayed in dropdown
+    phaseSelect.add(opt);
+});
+
+
     function checkResult() {
     // 1. Roll number aur phase fetch
     var roll = document.getElementById("roll").value.trim();
@@ -197,6 +200,7 @@
 
     // ✅ 8. **Redirect to result.html** after short delay
     setTimeout(function(){
+        student.phase = phase; 
         student.totalMarks = totalMarks;
         student.totalObtained = totalObtained;
         localStorage.setItem("studentData", JSON.stringify(student));
@@ -207,4 +211,3 @@
 </script>
 </body>
 </html>
-
