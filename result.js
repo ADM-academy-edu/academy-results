@@ -101,7 +101,7 @@ const results = {
     }
     },
     "School pre board": {},
-    "phase 1": {
+    "Phase 1": {
         "120101": { 
         roll:"120101", name:"Hanzla Akram", father:"Muhammad Akram", institute:"Intelligence Academy Gujranwala Rahwali Cantt", 
         subjects:[
@@ -155,11 +155,11 @@ const results = {
         ]
     }
 },
-    "phase 2": {},
-    "phase 3": {}, 
-    "phase 4": {}, 
-    "phase 5": {}, 
-    "phase 6": {}, 
+    "Phase 2": {},
+    "Phase 3": {}, 
+    "Phase 4": {}, 
+    "Phase 5": {}, 
+    "Phase 6": {}, 
     "Pre Board 1": {}, 
     "Pre Board 2": {}, 
     "Final Pre Board": {}
@@ -208,3 +208,4 @@ function checkResult() {
 
     console.log(student); // testing
 };
+
