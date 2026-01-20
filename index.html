@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Intelligence Academy Result</title>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+    body {
+        font-family: 'Roboto', sans-serif;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;   
+        align-items: center;
+        background: linear-gradient(-45deg, #6a11cb, #2575fc, #ff758c, #ff7eb3);
+        background-size: 400% 400%;
+        animation: gradientBG 15s ease infinite;
+        color: #fff;
+    }
+
+    @keyframes gradientBG {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    .academy-logo {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        animation: pulseLogo 2s infinite alternate;
+    }
+
+    @keyframes pulseLogo {
+        0% { transform: scale(1) rotate(0deg); }
+        50% { transform: scale(1.1) rotate(15deg); }
+        100% { transform: scale(1) rotate(0deg); }
+    }
+
+    .academy-name {
+        font-size: 40px;
+        font-weight: bold;
+        margin: 10px 0;
+        text-align: center;
+        text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+        animation: fadeInText 2s ease forwards;
+    }
+
+    @keyframes fadeInText { from {opacity:0;} to {opacity:1;} }
+
+    .box {
+        background: rgba(255,255,255,0.1);
+        backdrop-filter: blur(15px);
+        width: 400px;
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+        text-align: center;
+        margin-top: 30px;
+        animation: slideIn 1s ease forwards;
+    }
+
+    @keyframes slideIn {
+        from { transform: translateY(-100%); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+    }
+
+    input, select, button {
+        width: 90%;
+        padding: 12px;
+        margin: 10px 0;
+        border-radius: 10px;
+        border: none;
+        font-size: 16px;
+    }
+
+    button {
+        background: linear-gradient(90deg, #6a11cb, #2575fc);
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    button:hover {
+        transform: scale(1.05);
+        box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    }
+
+    .message {
+        font-size: 22px;
+        margin-top: 20px;
+        padding: 10px 20px;
+        border-radius: 15px;
+        display: inline-block;
+        animation: bounceMsg 1s infinite alternate;
+    }
+
+    .pass { background: rgba(0,255,0,0.2); color: #00ff00; }
+    .fail { background: rgba(255,0,0,0.2); color: #ff0000; }
+
+    @keyframes bounceMsg {
+        0% { transform: translateY(0); }
+        100% { transform: translateY(-10px); }
+    }
+</style>
+</head>
+<body>
+
+<img src="logo.jpg" alt="Intelligence Academy Logo" class="academy-logo">
+<div class="academy-name">Intelligence Academy</div>
+
+<div class="box">
+    <h3>Check Your Result</h3>
+    <input type="text" id="roll" placeholder="Enter Roll Number">
+
+    <select id="phase">
+        <option value="">Select Phase Round</option>
+    </select>
+
+    <button onclick="checkResult()">Check Result</button>
+    <div id="message"></div>
+</div>
+
+<script src="result.js"></script>
+<script>
+    // Populate phase dropdown dynamically
+    const phaseSelect = document.getElementById("phase");
+    ["Pre Phase","School pre board","phase 1","phase 2","phase 3","phase 4","phase 5","phase 6","Pre Board 1","Pre Board 2","Final Pre Board"].forEach(phase=>{
+        const opt = document.createElement("option");
+        opt.value = phase;
+        opt.text = phase.charAt(0).toUpperCase() + phase.slice(1);
+        phaseSelect.add(opt);
+    });
+    function checkResult() {
+    // 1. Roll number aur phase fetch
+    var roll = document.getElementById("roll").value.trim();
+    var phase = document.getElementById("phase").value;
+    var msg = document.getElementById("message");
+    msg.innerHTML = "";
+
+    // 2. Input validation
+    if(!roll || !phase){
+        msg.innerHTML="❌ Enter Roll Number and select Phase";
+        msg.className="message fail";
+        return;
+    }
+
+    // 3. Check if student exists
+    if(!results[phase] || !results[phase][roll]){
+        msg.innerHTML="❌ Result not found";
+        msg.className="message fail";
+        return;
+    }
+
+    var student = results[phase][roll];
+
+    // 4. Subjects check
+    if(!student.subjects || student.subjects.length === 0){
+        msg.innerHTML="❌ Result not found";
+        msg.className="message fail";
+        return;
+    }
+
+    // 5. Calculate total marks, failed subjects etc.
+    var totalObtained = 0, totalMarks = 0, failSubjects = [], absentCount = 0;
+    student.subjects.forEach(s => {
+        totalMarks += s.total;
+        if(s.obtained === 0){
+            absentCount++;
+            failSubjects.push(s.subject);
+        } else {
+            totalObtained += s.obtained;
+            if((s.obtained/s.total)*100 < 40) failSubjects.push(s.subject);
+        }
+    });
+
+    // 6. Determine pass/fail
+    student.status = (failSubjects.length>0 || absentCount>=3) ? "FAIL" : "PASS";
+
+    // 7. Show pass/fail message
+    if(student.status === "PASS"){
+        msg.innerHTML="🎉 Congratulations! 🎉";
+        msg.className="message pass";
+    } else {
+        msg.innerHTML="😢 Unfortunately you have failed 😢";
+        msg.className="message fail";
+    }
+
+    // ✅ 8. **Redirect to result.html** after short delay
+    setTimeout(function(){
+        student.totalMarks = totalMarks;
+        student.totalObtained = totalObtained;
+        localStorage.setItem("studentData", JSON.stringify(student));
+        window.location.href = "result.html"; // ensure result.html exists in same folder
+    }, 1500); // 1.5 second delay to show message
+}
+
+</script>
+</body>
+</html>

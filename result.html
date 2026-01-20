@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Intelligence Academy Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #c3ecf9, #ffffff);
+            padding: 40px;
+            color: #333;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .logo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            animation: rotateLogo 5s linear infinite;
+        }
+        @keyframes rotateLogo {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .academy-name {
+            font-size: 36px;
+            font-weight: bold;
+            margin-top: 10px;
+            color: #1a73e8;
+            text-shadow: 1px 1px 3px #aaa;
+            animation: bounceIn 1.5s;
+        }
+        @keyframes bounceIn {
+            0% { transform: scale(0.2); opacity: 0; }
+            60% { transform: scale(1.2); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        #msg { font-size: 28px; text-align: center; margin: 20px 0; }
+        .pass { color: green; }
+        .fail { color: red; }
+
+        .info { margin-bottom: 20px; font-size: 18px; line-height: 1.8; text-align: left; }
+
+        table { width: 100%; border-collapse: collapse; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); background: #fff; }
+        th, td { border: 1px solid #ccc; padding: 10px; text-align: center; }
+        th { background: #1a73e8; color: white; }
+
+        .result-box, #failBox {
+            width: 300px; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px gray; margin: 10px auto; position: relative; left: -400px; animation: slideInLeft 1s forwards; font-size: 16px;
+        }
+        .result-box { background: #e0f7fa; color: #000; }
+        #failBox { background: #ffebee; color: #d32f2f; }
+
+        @keyframes slideInLeft { to { left:0; } }
+
+        .wishes { text-align: center; font-size: 20px; margin-top: 20px; animation: fadeIn 2s; }
+        @keyframes fadeIn { from{opacity:0;} to{opacity:1;} }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <img src="logo.jpg" class="logo" alt="Academy Logo">
+    <div class="academy-name">Intelligence Academy</div>
+    <div class="sub">RESULT SHEET</div>
+</div>
+
+<div id="msg"></div>
+
+<div class="info" id="studentInfo"></div>
+
+<table id="subjectTable">
+    <tr>
+        <th>Subject</th>
+        <th>Total Marks</th>
+        <th>Obtained Marks</th>
+        <th>Percentage</th>
+        <th>Grade</th>
+    </tr>
+</table>
+
+<div class="result-box" id="overallBox"></div>
+<div class="result-box" id="failBox"></div>
+<div class="wishes" id="wishes"></div>
+
+<script>
+var student = JSON.parse(localStorage.getItem("studentData"));
+var failSubjects = [];
+var totalObtained = 0;
+var totalMarks = 0;
+var absentCount = 0;
+
+// Student info
+var infoDiv = document.getElementById("studentInfo");
+infoDiv.innerHTML = "Roll No.: "+student.roll+"<br>"+
+                    "Name: "+student.name+"<br>"+
+                    "Father Name: "+student.father+"<br>"+
+                    "Institute: "+student.institute;
+
+// Populate subject table
+var table = document.getElementById("subjectTable");
+student.subjects.forEach(function(sub){
+    totalMarks += sub.total;
+    var percent = "-";
+    var grade = "-";
+
+    if(sub.obtained === 0) {
+        absentCount++;
+        failSubjects.push(sub.subject);
+    } else {
+        totalObtained += sub.obtained;
+        percent = ((sub.obtained/sub.total)*100).toFixed(2);
+        grade = percent>=90?"A+": percent>=85?"A": percent>=80?"B+": percent>=75?"B": percent>=70?"C+": percent>=65?"C": percent>=60?"D+": percent>=50?"D": percent>=45?"E+": percent>=40?"E":"F";
+        if(grade === "F" && !failSubjects.includes(sub.subject)) failSubjects.push(sub.subject);
+    }
+
+    var row = table.insertRow();
+    row.insertCell(0).innerHTML = sub.subject;
+    row.insertCell(1).innerHTML = sub.total;
+    row.insertCell(2).innerHTML = sub.obtained===0?"Absent":sub.obtained;
+    row.insertCell(3).innerHTML = percent;
+    row.insertCell(4).innerHTML = grade;
+});
+
+// Overall grade
+var overallPercent = ((totalObtained/totalMarks)*100).toFixed(2);
+var overallGrade = overallPercent>=90?"A+": overallPercent>=85?"A": overallPercent>=80?"B+": overallPercent>=75?"B": overallPercent>=70?"C+": overallPercent>=65?"C": overallPercent>=60?"D+": overallPercent>=50?"D": overallPercent>=45?"E+": overallPercent>=40?"E":"F";
+
+// Pass/fail logic
+if(overallPercent<40 || failSubjects.length>0 || absentCount>=3) student.status = "FAIL";
+else student.status = "PASS";
+
+// Display overall
+var overall = document.getElementById("overallBox");
+overall.innerHTML="Total Marks: "+totalMarks+"<br>"+
+                  "Obtained Marks: "+totalObtained+"<br>"+
+                  "Percentage: "+overallPercent+"%<br>"+
+                  "Grade: "+overallGrade;
+
+// Display fail subjects
+var failBox = document.getElementById("failBox");
+if(student.status==="FAIL" && failSubjects.length>0){
+    failBox.innerHTML = "Failed Subjects:<br>" + failSubjects.join(", ");
+} else {
+    failBox.style.display="none";
+}
+
+// Message
+var msg = document.getElementById("msg");
+msg.innerHTML = student.status==="PASS"?"🎉 Congratulations 🎉":"😢 Unfortunately! You have failed 😢";
+msg.className = student.status==="PASS"?"pass":"fail";
+
+// Wishes
+setTimeout(function(){
+    var wish = document.getElementById("wishes");
+    if(student.status==="PASS"){
+        wish.innerHTML="🎊 Best wishes for your future! Keep shining! 🎊";
+    } else {
+        wish.innerHTML="💪 Work harder next time! You can do it! 💪";
+    }
+},1200);
+</script>
+</body>
+</html>
