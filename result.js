@@ -1,6 +1,15 @@
-var results = {
-    "120101": { 
-        roll:"120101", name:"Hanzla Akram", father:"Muhammad Akram", institute:"Intelligence Academy Gujranwala Rahwali Cantt",
+            // {subject:"English", total:, obtained:},
+            // {subject:"Urdu", total:, obtained:},
+            // {subject:"Math", total:, obtained:},
+            // {subject:"Physics", total:, obtained:},
+            // {subject:"Chemistry", total:, obtained:},
+            // {subject:"Computer Science", total:, obtained:},
+            // {subject:"Terjma Tul Quran", total:, obtained:},
+            // {subject:"Islamyat", total:, obtained:}
+const results = {
+    "Pre Phase": {
+        "120101": { 
+        roll:"120101", name:"Hanzla Akram", father:"Muhammad Akram", institute:"Intelligence Academy Gujranwala Rahwali Cantt", 
         subjects:[
             {subject:"English", total:34, obtained:17},
             {subject:"Urdu", total:40, obtained:23.5},
@@ -39,7 +48,7 @@ var results = {
         ]
     },
     "120104": { 
-        roll:"120104", name:"Talha Naseer", father:"Naseer Ahmed", institute:"Intelligence Academy Gujranwala Rahwali Cantt",
+        roll:"120104", name:"Talha Naseer", father:"Naseer Ahmed", institute:"Intelligence Academy Gujranwala Rahwali Cantt", 
         subjects:[
             {subject:"English", total:34, obtained:0},
             {subject:"Urdu", total:40, obtained:0},
@@ -52,7 +61,7 @@ var results = {
         ]
     },
     "120105": { 
-        roll:"120105", name:"Kaleem Haider", father:"Allah Dita", institute:"Intelligence Academy Gujranwala Rahwali Cantt",
+        roll:"120105", name:"Kaleem Haider", father:"Allah Dita", institute:"Intelligence Academy Gujranwala Rahwali Cantt", 
         subjects:[
             {subject:"English", total:34, obtained:3},
             {subject:"Urdu", total:29, obtained:12},
@@ -65,7 +74,7 @@ var results = {
         ]
     },
     "120106": { 
-        roll:"120106", name:"Subhan Asif", father:"Muhammad Asif", institute:"Intelligence Academy Gujranwala Rahwali Cantt",
+        roll:"120106", name:"Subhan Asif", father:"Muhammad Asif", institute:"Intelligence Academy Gujranwala Rahwali Cantt", 
         subjects:[
             {subject:"English", total:34, obtained:6.5},
             {subject:"Urdu", total:34, obtained:13},
@@ -78,7 +87,7 @@ var results = {
         ]
     },
     "120107": { 
-        roll:"120107", name:"Khujasta Noor", father:"Naseer Ahmed", institute:"Intelligence Academy Gujranwala Rahwali Cantt",
+        roll:"120107", name:"Khujasta Noor", father:"Naseer Ahmed", institute:"Intelligence Academy Gujranwala Rahwali Cantt", 
         subjects:[
             {subject:"English", total:34, obtained:0},
             {subject:"Urdu", total:29, obtained:0},
@@ -89,18 +98,113 @@ var results = {
             {subject:"Terjma Tul Quran", total:25, obtained:11},
             {subject:"Islamyat", total:38, obtained:0}
         ]
+    }
     },
-    "120108": { 
-        roll:"120108", name:"Abdul Rehman Minhas", father:"Muhammad Boota", institute:"Intelligence Academy Gujranwala Rahwali Cantt",
+    "School pre board": {},
+    "phase 1": {
+        "120101": { 
+        roll:"120101", name:"Hanzla Akram", father:"Muhammad Akram", institute:"Intelligence Academy Gujranwala Rahwali Cantt", 
         subjects:[
-            {subject:"English", total:34, obtained:30},
-            {subject:"Urdu", total:34, obtained:32},
-            {subject:"Math", total:40, obtained:40},
-            {subject:"Physics", total:29, obtained:28.5},
-            {subject:"Chemistry", total:40, obtained:40},
-            {subject:"Computer Science", total:19, obtained:19},
-            {subject:"Terjma Tul Quran", total:25, obtained:24},
-            {subject:"Islamyat", total:38, obtained:37}
+            {subject:"English", total:25, obtained:0},
+            {subject:"Urdu", total:32, obtained:24.5},
+            {subject:"Math", total:21, obtained:17},
+            {subject:"Physics", total:18, obtained:16},
+            {subject:"Chemistry", total:20, obtained:16},
+            {subject:"Computer Science", total:38, obtained:25.5},
+            {subject:"Terjma Tul Quran", total:27, obtained:22.5},
+            {subject:"Islamyat", total:46, obtained:31.5}
+        ]
+    },
+        "120102": { 
+        roll:"120102", name:"Awais Shahid", father:"Shahid Mehmood", institute:"Intelligence Academy Gujranwala Rahwali Cantt",
+        subjects:[
+           {subject:"English", total:25, obtained:10},
+            {subject:"Urdu", total:32, obtained:17.5},
+            {subject:"Math", total:21, obtained:16.5},
+            {subject:"Physics", total:18, obtained:9},
+            {subject:"Chemistry", total:20, obtained:16.5},
+            {subject:"Computer Science", total:38, obtained:20},
+            {subject:"Terjma Tul Quran", total:27, obtained:17},
+            {subject:"Islamyat", total:46, obtained:31}
+        ]
+    },
+        "120104": { 
+        roll:"120104", name:"Talha Naseer", father:"Naseer Ahmed", institute:"Intelligence Academy Gujranwala Rahwali Cantt", 
+        subjects:[
+            {subject:"English", total:25, obtained:0},
+            {subject:"Urdu", total:32, obtained:13.5},
+            {subject:"Math", total:21, obtained:6},
+            {subject:"Physics", total:18, obtained:4},
+            {subject:"Chemistry", total:20, obtained:7},
+            {subject:"Computer Science", total:38, obtained:3},
+            {subject:"Terjma Tul Quran", total:27, obtained:18},
+            {subject:"Islamyat", total:46, obtained:0}
+        ]
+    },
+        "120107": { 
+        roll:"120107", name:"Khujasta Noor", father:"Naseer Ahmed", institute:"Intelligence Academy Gujranwala Rahwali Cantt", 
+        subjects:[
+            {subject:"English", total:25, obtained:0},
+            {subject:"Urdu", total:32, obtained:13.5},
+            {subject:"Math", total:21, obtained:4},
+            {subject:"Physics", total:18, obtained:3},
+            {subject:"Chemistry", total:20, obtained:8},
+            {subject:"Computer Science", total:38, obtained:6.5},
+            {subject:"Terjma Tul Quran", total:27, obtained:22.5},
+            {subject:"Islamyat", total:46, obtained:0}
         ]
     }
+},
+    "phase 2": {},
+    "phase 3": {}, 
+    "phase 4": {}, 
+    "phase 5": {}, 
+    "phase 6": {}, 
+    "Pre Board 1": {}, 
+    "Pre Board 2": {}, 
+    "Final Pre Board": {}
+};
+function checkResult() {
+    const roll = document.getElementById("roll").value.trim();
+    const phase = document.getElementById("phase").value;
+    const msg = document.getElementById("message");
+
+    if(!roll || !phase){
+        msg.innerHTML="❌ Enter Roll Number and select Phase";
+        msg.className="message fail";
+        return;
+    }
+
+    if(!results[phase] || !results[phase][roll]){
+        msg.innerHTML="❌ Result not found";
+        msg.className="message fail";
+        return;
+    }
+
+    const student = results[phase][roll];
+
+    let totalObtained = 0, totalMarks = 0, failSubjects = [], absentCount = 0;
+
+    student.subjects.forEach(s=>{
+        totalMarks += s.total;
+        if(s.obtained===0){
+            absentCount++;
+            failSubjects.push(s.subject);
+        } else {
+            totalObtained += s.obtained;
+            if((s.obtained/s.total)*100<40) failSubjects.push(s.subject);
+        }
+    });
+
+    student.status = (failSubjects.length>0 || absentCount>=3)?"FAIL":"PASS";
+
+    if(student.status==="PASS"){
+        msg.innerHTML="🎉 Congratulations! 🎉";
+        msg.className="message pass";
+    } else {
+        msg.innerHTML="😢 Unfortunately you have failed 😢";
+        msg.className="message fail";
+    }
+
+    console.log(student); // testing
 };
