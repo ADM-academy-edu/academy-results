@@ -228,12 +228,12 @@ const results = {
         subjects:[
             {subject:"English", total:40, obtained:26},
             {subject:"Urdu", total:52, obtained:40},
-            {subject:"Math", total:34, obtained:0},
+            {subject:"Math", total:34, obtained:32},
             {subject:"Physics", total:23, obtained:20},
-            {subject:"Chemistry", total:27, obtained:0},
+            {subject:"Chemistry", total:27, obtained:24},
             {subject:"Computer Science", total:30, obtained:29},
             {subject:"Terjma Tul Quran", total:36, obtained:33},
-            {subject:"Islamyat", total:46, obtained:0}
+            {subject:"Islamyat", total:46, obtained:40}
         ]
     },
     "120102": { 
@@ -379,3 +379,4 @@ function checkResult() {
 
     console.log(student); // testing
 };
+
