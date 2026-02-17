@@ -278,21 +278,21 @@ const results = {
     "120105": { 
         roll:"120105", name:"Kaleem Haider", father:"Allah Dita", institute:"Intelligence Academy Gujranwala Rahwali Cantt", 
         subjects:[
-            {subject:"English", total:40, obtained:3},
-            {subject:"Urdu", total:52, obtained:4},
+            {subject:"English", total:40, obtained:4},
+            {subject:"Urdu", total:52, obtained:21},
             {subject:"Math", total:34, obtained:18.5},
             {subject:"Physics", total:23, obtained:1},
             {subject:"Chemistry", total:27, obtained:5},
-            {subject:"Computer Science", total:30, obtained:0},
+            {subject:"Computer Science", total:30, obtained:12},
             {subject:"Terjma Tul Quran", total:36, obtained:18},
-            {subject:"Islamyat", total:46, obtained:17}
+            {subject:"Islamyat", total:46, obtained:18.5}
         ]
     },
     "120106": { 
         roll:"120106", name:"Subhan Asif", father:"Muhammad Asif", institute:"Intelligence Academy Gujranwala Rahwali Cantt", 
         subjects:[
             {subject:"English", total:40, obtained:19},
-            {subject:"Urdu", total:52, obtained:19},
+            {subject:"Urdu", total:52, obtained:21},
             {subject:"Math", total:34, obtained:26.5},
             {subject:"Physics", total:23, obtained:13},
             {subject:"Chemistry", total:27, obtained:11},
@@ -379,6 +379,7 @@ function checkResult() {
 
     console.log(student); // testing
 };
+
 
 
 
