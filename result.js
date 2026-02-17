@@ -253,11 +253,11 @@ const results = {
         roll:"120103", name:"Hasnain Ali", father:"Shahbaz Ali", institute:"Intelligence Academy Gujranwala Rahwali Cantt",
         subjects:[
             {subject:"English", total:40, obtained:21},
-            {subject:"Urdu", total:52, obtained:0},
+            {subject:"Urdu", total:52, obtained:21},
             {subject:"Math", total:34, obtained:17},
             {subject:"Physics", total:23, obtained:15},
             {subject:"Chemistry", total:27, obtained:12},
-            {subject:"Computer Science", total:30, obtained:0},
+            {subject:"Computer Science", total:30, obtained:12},
             {subject:"Terjma Tul Quran", total:36, obtained:30},
             {subject:"Islamyat", total:46, obtained:31}
         ]
@@ -295,8 +295,8 @@ const results = {
             {subject:"Urdu", total:52, obtained:19},
             {subject:"Math", total:34, obtained:26.5},
             {subject:"Physics", total:23, obtained:13},
-            {subject:"Chemistry", total:27, obtained:3},
-            {subject:"Computer Science", total:30, obtained:0},
+            {subject:"Chemistry", total:27, obtained:11},
+            {subject:"Computer Science", total:30, obtained:12},
             {subject:"Terjma Tul Quran", total:36, obtained:21},
             {subject:"Islamyat", total:46, obtained:21}
         ]
@@ -379,4 +379,5 @@ function checkResult() {
 
     console.log(student); // testing
 };
+
 
