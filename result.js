@@ -243,7 +243,7 @@ const results = {
             {subject:"Urdu", total:52, obtained:30},
             {subject:"Math", total:34, obtained:22.5},
             {subject:"Physics", total:23, obtained:20},
-            {subject:"Chemistry", total:27, obtained:12},
+            {subject:"Chemistry", total:27, obtained:15},
             {subject:"Computer Science", total:30, obtained:17},
             {subject:"Terjma Tul Quran", total:36, obtained:32},
             {subject:"Islamyat", total:46, obtained:28}
@@ -379,5 +379,6 @@ function checkResult() {
 
     console.log(student); // testing
 };
+
 
 
