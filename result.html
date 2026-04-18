@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Intelligence Academy Result</title>
     <style>
         body {
@@ -58,6 +60,64 @@
 
         .wishes { text-align: center; font-size: 20px; margin-top: 20px; animation: fadeIn 2s; }
         @keyframes fadeIn { from{opacity:0;} to{opacity:1;} }
+            /* 📱 Mobile Devices */
+@media (max-width: 480px) {
+
+    .academy-name {
+        font-size: 24px;
+    }
+
+    .box {
+        width: 90%;
+        padding: 20px;
+    }
+
+    input, select, button {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .academy-logo {
+        width: 70px;
+    }
+
+    .bg-animation span {
+        font-size: 12px !important;
+    }
+}
+/* 📱 Tablets */
+@media (min-width: 481px) and (max-width: 768px) {
+
+    .box {
+        width: 80%;
+    }
+
+    .academy-name {
+        font-size: 28px;
+    }
+
+    .bg-animation span {
+        font-size: 14px !important;
+    }
+}
+/* 💻 Small Laptops */
+@media (min-width: 769px) and (max-width: 1024px) {
+
+    .box {
+        width: 60%;
+    }
+}
+/* 🖥️ Large Screens */
+@media (min-width: 1400px) {
+
+    .box {
+        width: 420px;
+    }
+
+    .academy-name {
+        font-size: 36px;
+    }
+}
     </style>
 </head>
 <body>
